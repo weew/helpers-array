@@ -158,19 +158,20 @@ if ( ! function_exists('array_extend')) {
     /**
      * Extend one array with another.
      *
-     * @param array $array1
-     * @param array $array2
+     * @param array $arrays
      *
      * @return array
      */
-    function array_extend(array $array1, array $array2) {
-        $merged = $array1;
+    function array_extend(array $arrays) {
+        $merged = [];
 
-        foreach ($array2 as $key => &$value) {
-            if (is_array($value) and isset ($merged [$key]) and is_array($merged [$key])) {
-                $merged [$key] = array_extend($merged [$key], $value);
-            } else {
-                $merged [$key] = $value;
+        foreach (func_get_args() as $array) {
+            foreach ($array as $key => $value) {
+                if (is_array($value) and array_has($merged, $key) and is_array($merged[$key])) {
+                    $merged[$key] = array_extend($merged[$key], $value);
+                } else {
+                    $merged[$key] = $value;
+                }
             }
         }
 

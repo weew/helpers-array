@@ -115,4 +115,17 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
     public function test_array_extend($expected, $array1, $array2) {
         $this->assertEquals($expected, array_extend($array1, $array2));
     }
+
+    public function test_array_extend_many() {
+        $expected = [
+            'foo' => 'bar', 'bar' => 'foo', 'baz' => 'foo', 'yolo' => 'swag'
+        ];
+
+        $array1 = ['foo' => 'bar'];
+        $array2 = ['bar' => 'foo'];
+        $array3 = ['baz' => 'foo'];
+        $array4 = ['yolo' => 'swag'];
+
+        $this->assertEquals($expected, array_extend($array1, $array2, $array3, $array4));
+    }
 }
