@@ -14,6 +14,7 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
 
     public function array_get_provider() {
         return [
+            [null, ['foo' => 'bar'], null, null],
             ['bar', ['foo' => 'bar'], 'foo', null],
             ['foo', ['foo' => 'bar'], 'bar', 'foo'],
             ['baz', ['foo' => ['bar' => 'baz']], 'foo.bar', null],
@@ -25,9 +26,10 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
 
     public function array_set_provider() {
         return [
-            ['foo', 'foo'],
-            ['foo.bar', 'bar'],
-            ['foo.bar.baz', 'baz']
+            [null, null, 'foo'],
+            ['foo', 'foo', 'foo'],
+            ['bar', 'foo.bar', 'bar'],
+            ['baz', 'foo.bar.baz', 'baz'],
         ];
     }
 
@@ -84,11 +86,11 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
     /**
      * @dataProvider array_set_provider
      */
-    public function test_array_set($path, $value) {
+    public function test_array_set($expected, $path, $value) {
         $array = [];
         $this->assertFalse(array_has($array, $path));
         array_set($array, $path, $value);
-        $this->assertEquals($value, array_get($array, $path));
+        $this->assertEquals($expected, array_get($array, $path));
     }
 
     /**

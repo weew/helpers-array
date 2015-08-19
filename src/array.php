@@ -11,8 +11,8 @@ if ( ! function_exists('array_get')) {
      * @return mixed
      */
     function array_get($array, $key, $default = null) {
-        if (is_null($key)) {
-            return $array;
+        if ($key === null) {
+            return null;
         }
 
         if (isset($array[$key])) {
@@ -20,7 +20,7 @@ if ( ! function_exists('array_get')) {
         }
 
         foreach (explode('.', $key) as $segment) {
-            if ( ! is_array($array) or ! array_key_exists($segment, $array)) {
+            if ( ! is_array($array) || ! array_key_exists($segment, $array)) {
                 return $default;
             }
 
@@ -41,7 +41,7 @@ if ( ! function_exists('array_has')) {
      * @return bool
      */
     function array_has($array, $key) {
-        if (empty($array) or is_null($key)) {
+        if (empty($array) || $key === null) {
             return false;
         }
 
@@ -50,7 +50,7 @@ if ( ! function_exists('array_has')) {
         }
 
         foreach (explode('.', $key) as $segment) {
-            if ( ! is_array($array) or ! array_key_exists($segment, $array)) {
+            if ( ! is_array($array) || ! array_key_exists($segment, $array)) {
                 return false;
             }
 
@@ -74,8 +74,8 @@ if ( ! function_exists('array_set')) {
      * @return array
      */
     function array_set(&$array, $key, $value) {
-        if (is_null($key)) {
-            return $array = $value;
+        if ($key === null) {
+            return null;
         }
 
         $keys = explode('.', $key);
@@ -83,10 +83,7 @@ if ( ! function_exists('array_set')) {
         while (count($keys) > 1) {
             $key = array_shift($keys);
 
-            // If the key doesn't exist at this depth, we will just create an empty array
-            // to hold the next value, allowing us to create the arrays to hold final
-            // values at the correct depth. Then we'll keep digging into the array.
-            if ( ! isset($array[$key]) or ! is_array($array[$key])) {
+            if ( ! isset($array[$key]) || ! is_array($array[$key])) {
                 $array[$key] = [];
             }
 
@@ -117,7 +114,7 @@ if ( ! function_exists('array_remove')) {
             while (count($parts) > 1) {
                 $part = array_shift($parts);
 
-                if (isset($array[$part]) and is_array($array[$part])) {
+                if (isset($array[$part]) && is_array($array[$part])) {
                     $array = &$array[$part];
                 }
             }
@@ -167,7 +164,7 @@ if ( ! function_exists('array_extend')) {
 
         foreach (func_get_args() as $array) {
             foreach ($array as $key => $value) {
-                if (is_array($value) and array_has($merged, $key) and is_array($merged[$key])) {
+                if (is_array($value) && array_has($merged, $key) && is_array($merged[$key])) {
                     $merged[$key] = array_extend($merged[$key], $value);
                 } else {
                     $merged[$key] = $value;
