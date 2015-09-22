@@ -175,3 +175,32 @@ if ( ! function_exists('array_extend')) {
         return $merged;
     }
 }
+
+if ( ! function_exists('array_extend_distinct')) {
+    /**
+     * Extend one array with another. Non associative arrays will not be merged
+     * but rather replaced.
+     *
+     * @param array $arrays
+     *
+     * @return array
+     */
+    function array_extend_distinct(array $arrays) {
+        $merged = [];
+
+        foreach (func_get_args() as $array) {
+            foreach ($array as $key => $value) {
+                if (is_array($value) &&
+                    array_has($merged, $key) && is_array($merged[$key]) &&
+                    array_keys($value) !== range(0, count($value) - 1)) {
+                    $merged[$key] = array_extend($merged[$key], $value);
+                } else {
+                    $merged[$key] = $value;
+                }
+            }
+        }
+
+        return $merged;
+    }
+}
+
