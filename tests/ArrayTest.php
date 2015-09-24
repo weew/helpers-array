@@ -86,6 +86,20 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
                 [0 => 'foo', 1 => 'bar', 'baz' => ['foo' => 'bar'], 2 => [2, 3]],
                 [0 => 'yolo', 'bar' => ['bar' => ['baz' => 'swag']], 2 => [1]],
             ],
+            [
+                ['foo' => ['bar' => [5]]],
+                ['foo' => ['bar' => [1, 2, 3,]]],
+                ['foo' => ['bar' => [5]]],
+            ],
+        ];
+    }
+
+    public function array_is_associative_provider() {
+        return [
+            [false, [0, '1', 2]],
+            [false, [99 => 0, 5 => 1, 2 => 2]],
+            [true, ['foo' => 'bar', 1, 2]],
+            [true, ['foo' => 'bar', 'bar' => 'baz']],
         ];
     }
 
@@ -156,5 +170,19 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
      */
     public function test_array_extend_distinct($expected, $array1, $array2) {
         $this->assertEquals($expected, array_extend_distinct($array1, $array2));
+    }
+
+    /**
+     * @dataProvider array_is_associative_provider
+     */
+    public function test_array_is_associative($expected, $array) {
+        $this->assertEquals($expected, array_is_associative($array));
+    }
+
+    /**
+     * @dataProvider array_is_associative_provider
+     */
+    public function test_array_is_indexed($expected, $array) {
+        $this->assertEquals( ! $expected, array_is_indexed($array));
     }
 }

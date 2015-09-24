@@ -191,12 +191,17 @@ if ( ! function_exists('array_extend_distinct')) {
         foreach (func_get_args() as $array) {
             foreach ($array as $key => $value) {
                 if (is_array($value) &&
-                    array_has($merged, $key) && is_array($merged[$key]) &&
-                    array_keys($value) !== range(0, count($value) - 1)) {
-                    $merged[$key] = array_extend($merged[$key], $value);
-                } else {
-                    $merged[$key] = $value;
+                    array_has($merged, $key) &&
+                    is_array($merged[$key])
+                ) {
+                    if (array_is_associative($value) && array_is_associative($merged[$key])) {
+                        $merged[$key] = array_extend_distinct($merged[$key], $value);
+
+                        continue;
+                    }
                 }
+
+                $merged[$key] = $value;
             }
         }
 
@@ -204,3 +209,38 @@ if ( ! function_exists('array_extend_distinct')) {
     }
 }
 
+if ( ! function_exists('array_is_associative')) {
+    /**
+     * Check if the given array is associative.
+     *
+     * @param array $array
+     *
+     * @return bool
+     */
+    function array_is_associative(array $array) {
+        $keys = array_keys($array);
+
+        if (array_keys($keys) !== $keys) {
+            foreach ($keys as $key) {
+                if ( ! is_numeric($key)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+if ( ! function_exists('array_is_indexed')) {
+    /**
+     * Test if an array has a numeric index.
+     *
+     * @param array $array
+     *
+     * @return bool
+     */
+    function array_is_indexed(array $array) {
+        return ! array_is_associative($array);
+    }
+}
