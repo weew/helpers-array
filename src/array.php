@@ -10,7 +10,7 @@ if ( ! function_exists('array_get')) {
      *
      * @return mixed
      */
-    function array_get($array, $key, $default = null) {
+    function array_get(array $array, $key, $default = null) {
         if ($key === null) {
             return null;
         }
@@ -40,7 +40,7 @@ if ( ! function_exists('array_has')) {
      *
      * @return bool
      */
-    function array_has($array, $key) {
+    function array_has(array $array, $key) {
         if (empty($array) || $key === null) {
             return false;
         }
@@ -73,7 +73,7 @@ if ( ! function_exists('array_set')) {
      *
      * @return array
      */
-    function array_set(&$array, $key, $value) {
+    function array_set(array &$array, $key, $value) {
         if ($key === null) {
             return null;
         }
@@ -105,7 +105,7 @@ if ( ! function_exists('array_remove')) {
      *
      * @return void
      */
-    function array_remove(&$array, $keys) {
+    function array_remove(array &$array, $keys) {
         $original = &$array;
 
         foreach ((array) $keys as $key) {
@@ -121,7 +121,6 @@ if ( ! function_exists('array_remove')) {
 
             unset($array[array_shift($parts)]);
 
-            // clean up after each pass
             $array = &$original;
         }
     }
@@ -189,7 +188,7 @@ if ( ! function_exists('array_dot')) {
      *
      * @return array
      */
-    function array_dot($array, $prepend = '') {
+    function array_dot(array $array, $prepend = '') {
         $results = [];
 
         foreach ($array as $key => $value) {
