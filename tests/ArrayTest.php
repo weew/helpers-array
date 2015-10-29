@@ -103,6 +103,35 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
         ];
     }
 
+    public function array_reset_provider() {
+        return [
+            [
+                [0 => 'foo', 'baz' => 'yolo', 1 => 'bar'],
+                [10 => 'foo', 'baz' => 'yolo', '199' => 'bar'],
+                false
+            ],
+            [
+                [0 => [10 => 'foo', 'baz' => 'yolo', '199' => 'bar'], 'baz' => 'yolo', 1 => 'bar'],
+                [10 => [10 => 'foo', 'baz' => 'yolo', '199' => 'bar'], 'baz' => 'yolo', '199' => 'bar'],
+                false,
+            ],
+            [
+                [0 => [0 => 'foo', 'baz' => 'yolo', 1 => 'bar'], 'baz' => 'yolo', 1 => 'bar'],
+                [10 => [10 => 'foo', 'baz' => 'yolo', '199' => 'bar'], 'baz' => 'yolo', '199' => 'bar'],
+                true,
+            ],
+        ];
+    }
+
+    public function array_add_provider() {
+        return [
+            [['list' => [1, 2, 3]], ['list' => [1, 2]], 'list', 3,],
+            [['value' => [1, 2]], ['value' => 1], 'value', 2,],
+            [['nested' => ['value' => [1, 2]]], ['nested' => ['value' => 1]], 'nested.value', 2,],
+            [['nested' => ['value' => [1, 2]]], ['nested' => ['value' => [1]]], 'nested.value', 2,],
+        ];
+    }
+
     /**
      * @dataProvider array_has_provider
      */
@@ -184,5 +213,19 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
      */
     public function test_array_is_indexed($expected, $array) {
         $this->assertEquals( ! $expected, array_is_indexed($array));
+    }
+
+    /**
+     * @dataProvider array_reset_provider
+     */
+    public function test_array_reset($expected, $array, $deep) {
+        $this->assertEquals($expected, array_reset($array, $deep), $deep);
+    }
+
+    /**
+     * @dataProvider array_add_provider
+     */
+    public function test_array_add($expected, $array, $key, $value) {
+        $this->assertEquals($expected, array_add($array, $key, $value));
     }
 }

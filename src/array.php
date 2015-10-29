@@ -127,6 +127,59 @@ if ( ! function_exists('array_remove')) {
     }
 }
 
+if ( ! function_exists('array_add')) {
+    /**
+     * Add an element to the array at a specific location.
+     *
+     * @param array $array
+     * @param $key
+     * @param $value
+     *
+     * @return array
+     */
+    function array_add(array &$array, $key, $value) {
+        $target = array_get($array, $key, []);
+
+        if ( ! is_array($target)) {
+            $target = [$target];
+        }
+
+        $target[] = $value;
+         array_set($array, $key, $target);
+
+        return $array;
+    }
+}
+
+if ( ! function_exists('array_reset')) {
+    /**
+     * Reset all numerical indexes of an array.
+     * Non-numerical indexes will stay untouched.
+     *
+     * @param array $array
+     * @param bool|false $deep
+     *
+     * @return array
+     */
+    function array_reset(array $array, $deep = false) {
+        $target = [];
+
+        foreach ($array as $key => $value) {
+            if ($deep && is_array($value)) {
+                $value = array_reset($value);
+            }
+
+            if (is_numeric($key)) {
+                $target[] = $value;
+            } else {
+                $target[$key] = $value;
+            }
+        }
+
+        return $target;
+    }
+}
+
 if ( ! function_exists('array_dot')) {
     /**
      * Flatten a multi-dimensional associative array with dots.
