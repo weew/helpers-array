@@ -108,6 +108,10 @@ if ( ! function_exists('array_remove')) {
     function array_remove(array &$array, $keys) {
         $original = &$array;
 
+        if ( ! is_array($keys)) {
+            $keys = [$keys];
+        }
+
         foreach ((array) $keys as $key) {
             $parts = explode('.', $key);
 
