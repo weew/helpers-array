@@ -1,6 +1,8 @@
 # Array helpers
 
-[![Build Status](https://travis-ci.org/weew/php-helpers-array.svg?branch=master)](https://travis-ci.org/weew/php-helpers-array)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/weew/php-helpers-array/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/weew/php-helpers-array/?branch=master)
-[![Coverage Status](https://coveralls.io/repos/weew/php-helpers-array/badge.svg?branch=master&service=github)](https://coveralls.io/github/weew/php-helpers-array?branch=master)
-[![License](https://poser.pugx.org/weew/php-helpers-array/license)](https://packagist.org/packages/weew/php-helpers-array)
+[![Build Status](https://img.shields.io/travis/weew/php-helpers-array.svg)](https://travis-ci.org/weew/php-helpers-array)
+[![Code Quality](https://img.shields.io/scrutinizer/g/weew/php-helpers-array.svg)](https://scrutinizer-ci.com/g/weew/php-helpers-array)
+[![Test Coverage](https://img.shields.io/coveralls/weew/php-helpers-array.svg)](https://coveralls.io/github/weew/php-helpers-array)
+[![Dependencies](https://img.shields.io/versioneye/d/php/weew:php-helpers-array.svg)](https://versioneye.com/php/weew:php-helpers-array)
+[![Version](https://img.shields.io/packagist/v/weew/php-helpers-array.svg)](https://packagist.org/packages/weew/php-helpers-array)
+[![Licence](https://img.shields.io/packagist/l/weew/php-helpers-array.svg)](https://packagist.org/packages/weew/php-helpers-array)
