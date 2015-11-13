@@ -100,6 +100,17 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
             [false, [99 => 0, 5 => 1, 2 => 2]],
             [true, ['foo' => 'bar', 1, 2]],
             [true, ['foo' => 'bar', 'bar' => 'baz']],
+            [true, []],
+        ];
+    }
+
+    public function array_is_index_provider() {
+        return [
+            [false, [1, 2, 3, 'a' => 'foo']],
+            [false, [0 => 3, 'a' => 'foo']],
+            [true, [1, 2, 3]],
+            [true, [0 => 1, '3' => 2]],
+            [true, []],
         ];
     }
 
@@ -209,10 +220,10 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @dataProvider array_is_associative_provider
+     * @dataProvider array_is_index_provider
      */
     public function test_array_is_indexed($expected, $array) {
-        $this->assertEquals( ! $expected, array_is_indexed($array));
+        $this->assertEquals($expected, array_is_indexed($array));
     }
 
     /**

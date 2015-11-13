@@ -65,8 +65,6 @@ if ( ! function_exists('array_set')) {
     /**
      * Set an array item to a given value using "dot" notation.
      *
-     * If no key is given to the method, the entire array will be replaced.
-     *
      * @param  array $array
      * @param  string $key
      * @param  mixed $value
@@ -132,7 +130,8 @@ if ( ! function_exists('array_remove')) {
 
 if ( ! function_exists('array_add')) {
     /**
-     * Add an element to the array at a specific location.
+     * Add an element to the array at a specific location
+     * using the "dot" notation.
      *
      * @param array $array
      * @param $key
@@ -156,8 +155,8 @@ if ( ! function_exists('array_add')) {
 
 if ( ! function_exists('array_reset')) {
     /**
-     * Reset all numerical indexes of an array.
-     * Non-numerical indexes will stay untouched.
+     * Reset all numerical indexes of an array (start from zero).
+     * Non-numerical indexes will stay untouched. Returns a new array.
      *
      * @param array $array
      * @param bool|false $deep
@@ -274,6 +273,10 @@ if ( ! function_exists('array_is_associative')) {
      * @return bool
      */
     function array_is_associative(array $array) {
+        if ($array == []) {
+            return true;
+        }
+
         $keys = array_keys($array);
 
         if (array_keys($keys) !== $keys) {
@@ -290,13 +293,17 @@ if ( ! function_exists('array_is_associative')) {
 
 if ( ! function_exists('array_is_indexed')) {
     /**
-     * Test if an array has a numeric index.
+     * Check if an array has a numeric index.
      *
      * @param array $array
      *
      * @return bool
      */
     function array_is_indexed(array $array) {
+        if ($array == []) {
+            return true;
+        }
+
         return ! array_is_associative($array);
     }
 }
