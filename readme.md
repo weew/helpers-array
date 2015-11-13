@@ -30,7 +30,7 @@
 
 ## Introduction
 
-This tiny library provides various helper functions to deal with array.
+This tiny library provides various helper functions to deal with arrays.
 
 ## Functions
 
