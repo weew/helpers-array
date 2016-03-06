@@ -15,6 +15,7 @@
     - [array_set](#array_set)
     - [array_remove](#array_remove)
     - [array_add](#array_add)
+    - [array_take](#array_take)
     - [array_reset](#array_reset)
     - [array_dot](#array_dot)
     - [array_extend](#array_extend)
@@ -61,6 +62,12 @@ Remove one or many array items from a given array using "dot" notation.
 Add an element to the array at a specific location using the "dot" notation.
 
 `array array_add(array &$array, mixed $key, mixed $value)`
+
+#### array\_take
+
+Get an element and remove it from the array using the "dot" notation.
+
+`array array_take(array &$array, mixed $key, [, mixed $default = null])`
 
 #### array\_reset
 

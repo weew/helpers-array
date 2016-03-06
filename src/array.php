@@ -153,6 +153,27 @@ if ( ! function_exists('array_add')) {
     }
 }
 
+if ( ! function_exists('array_take')) {
+    /**
+     * Get an item and remove it from the array.
+     *
+     * @param array $array
+     * @param $key
+     * @param null $default
+     *
+     * @return mixed
+     */
+    function array_take(array &$array, $key, $default = null) {
+        $value = array_get($array, $key, $default);
+
+        if (array_has($array, $key)) {
+            array_remove($array, $key);
+        }
+
+        return $value;
+    }
+}
+
 if ( ! function_exists('array_reset')) {
     /**
      * Reset all numerical indexes of an array (start from zero).

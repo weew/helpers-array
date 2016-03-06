@@ -239,4 +239,10 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
     public function test_array_add($expected, $array, $key, $value) {
         $this->assertEquals($expected, array_add($array, $key, $value));
     }
+
+    public function test_array_take() {
+        $array = ['foo' => ['bar' => 'baz']];
+        $this->assertEquals('baz', array_take($array, 'foo.bar'));
+        $this->assertEquals(['foo' => []], $array);
+    }
 }
