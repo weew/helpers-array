@@ -16,6 +16,8 @@
     - [array_remove](#array_remove)
     - [array_add](#array_add)
     - [array_take](#array_take)
+    - [array_first](#array_first)
+    - [array_last](#array_last)
     - [array_reset](#array_reset)
     - [array_dot](#array_dot)
     - [array_extend](#array_extend)
@@ -68,6 +70,18 @@ Add an element to the array at a specific location using the "dot" notation.
 Get an element and remove it from the array using the "dot" notation.
 
 `array array_take(array &$array, mixed $key, [, mixed $default = null])`
+
+#### array\_first
+
+Get the first element from an array.
+
+`array array_first(array &$array, [, mixed $default = null])`
+
+#### array\_last
+
+Get the last element from an array.
+
+`array array_last(array &$array, [, mixed $default = null])`
 
 #### array\_reset
 

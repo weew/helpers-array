@@ -174,6 +174,38 @@ if ( ! function_exists('array_take')) {
     }
 }
 
+if ( ! function_exists('array_first')) {
+    /**
+     * @param array $array
+     * @param null $default
+     *
+     * @return mixed
+     */
+    function array_first(array $array, $default = null) {
+        if (empty($array)) {
+            return $default;
+        }
+
+        return reset($array);
+    }
+}
+
+if ( ! function_exists('array_last')) {
+    /**
+     * @param array $array
+     * @param null $default
+     *
+     * @return mixed
+     */
+    function array_last(array $array, $default = null) {
+        if (empty($array)) {
+            return $default;
+        }
+
+        return array_first(array_reverse($array, true), $default);
+    }
+}
+
 if ( ! function_exists('array_reset')) {
     /**
      * Reset all numerical indexes of an array (start from zero).

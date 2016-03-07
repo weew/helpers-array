@@ -245,4 +245,22 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('baz', array_take($array, 'foo.bar'));
         $this->assertEquals(['foo' => []], $array);
     }
+
+    public function test_array_first() {
+        $array = ['foo', 'bar', 'baz'];
+        $this->assertEquals('foo', array_first($array));
+    }
+
+    public function test_array_first_returns_default_value() {
+        $this->assertEquals('foo', array_first([], 'foo'));
+    }
+
+    public function test_array_last() {
+        $array = ['foo', 'bat', 'baz'];
+        $this->assertEquals('baz', array_last($array));
+    }
+
+    public function test_array_last_returns_default_value() {
+        $this->assertEquals('baz', array_last([], 'baz'));
+    }
 }
