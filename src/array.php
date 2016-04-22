@@ -360,3 +360,18 @@ if ( ! function_exists('array_is_indexed')) {
         return ! array_is_associative($array);
     }
 }
+
+if ( ! function_exists('array_contains')) {
+    /**
+     * Check if an array contains a specific value.
+     *
+     * @param array $array
+     * @param $search
+     * @param bool $strict
+     *
+     * @return bool
+     */
+    function array_contains(array $array, $search, $strict = true) {
+        return in_array($search, $array, $strict);
+    }
+}

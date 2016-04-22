@@ -263,4 +263,12 @@ class ArrayTest extends PHPUnit_Framework_TestCase {
     public function test_array_last_returns_default_value() {
         $this->assertEquals('baz', array_last([], 'baz'));
     }
+
+    public function test_array_contains() {
+        $this->assertTrue(array_contains(['foo', 'bar'], 'bar'));
+        $this->assertFalse(array_contains(['foo', 'bar'], true));
+        $this->assertFalse(array_contains([true, 'bar'], 'foo'));
+        $this->assertTrue(array_contains([true, 'bar'], true));
+        $this->assertFalse(array_contains([true, 'bar'], 'true'));
+    }
 }

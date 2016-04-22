@@ -24,6 +24,7 @@
     - [array_extend_distinct](#array_extend_distinct)
     - [array_is_associative](#array_is_associative)
     - [array_is_indexed](#array_is_indexed)
+    - [array_contains](#array_contains)
 
 ## Installation
 
@@ -118,3 +119,9 @@ Check if the given array is associative.
 Check if an array has a numeric index.
 
 `bool array_is_indexed(array $array)`
+
+#### array\_contains
+
+Check if array contains a specific element.
+
+`array array_contains(array $array, mixed $search [, bool $strict = true])`
