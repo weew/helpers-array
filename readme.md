@@ -1,9 +1,9 @@
 # Array helpers
 
-[![Build Status](https://img.shields.io/travis/weew/php-helpers-array.svg)](https://travis-ci.org/weew/php-helpers-array)
-[![Test Coverage](https://img.shields.io/coveralls/weew/php-helpers-array.svg)](https://coveralls.io/github/weew/php-helpers-array)
-[![Version](https://img.shields.io/packagist/v/weew/php-helpers-array.svg)](https://packagist.org/packages/weew/php-helpers-array)
-[![Licence](https://img.shields.io/packagist/l/weew/php-helpers-array.svg)](https://packagist.org/packages/weew/php-helpers-array)
+[![Build Status](https://img.shields.io/travis/weew/helpers-array.svg)](https://travis-ci.org/weew/helpers-array)
+[![Test Coverage](https://img.shields.io/coveralls/weew/helpers-array.svg)](https://coveralls.io/github/weew/helpers-array)
+[![Version](https://img.shields.io/packagist/v/weew/helpers-array.svg)](https://packagist.org/packages/weew/helpers-array)
+[![Licence](https://img.shields.io/packagist/l/weew/helpers-array.svg)](https://packagist.org/packages/weew/helpers-array)
 
 ## Table of contents
 
@@ -28,7 +28,7 @@
 
 ## Installation
 
-`composer require weew/php-helpers-array`
+`composer require weew/helpers-array`
 
 ## Introduction
 

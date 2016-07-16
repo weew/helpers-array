@@ -10,7 +10,7 @@
          syntaxCheck="false"
          bootstrap="tests/bootstrap.php">
     <testsuites>
-        <testsuite name="php-helpers-array">
+        <testsuite name="helpers-array">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
